@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icycode-Warmlife</title>
+    <link rel="stylesheet" href="/blog/main.css">
+    <script src="/blog/functions.js"></script>
+    <script>
+        var swi_buts = [document.createElement('div'),document.createElement('div'),document.createElement('div'),document.createElement('div'),document.createElement('div')];
+ swi_buts.forEach(function(element, index){
+    element.className = 'pic-s-buttons';
+    
+    element.style.opacity = '0.5';
+    element.style.transition = 'width 0.1s ease-in-out,border-radius 0.1s ease-in-out,opacity 0.3s ease-in-out';
+    element.style.width = '20px';
+    element.style.height = '20px';
+    element.style.margin = '0 auto';
+    element.style.borderRadius = '50%';
+    element.style.backgroundColor = 'white';
+    element.style.cursor = 'pointer';
+    
+    document.getElementsByClassName('pic-switch')[0].appendChild(element);});
+    element.addEventListener("mouseover", function() {
+        element.style.transition = 'all 0.1s ease-in-out';
+        element.style.width = '30px';
+        element.style.borderRadius = '10px';
+        element.style.opacity = '1';
+    });
+    </script>
+    <style>
+
+        
+        /*主内容*/
+        #main-content {
+            
+            position: relative;
+            left: 0;
+            z-index: 1;
+            background-color: #EEF7F2;
+        }
+        body {
+            background-color: #bfeecc;
+        }
+        /*视觉图*/
+        #welcome-pictures {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }/*
+        #welcome-pictures .pic{
+            height: 100vh;
+            background-image: url("resource/wel1.png");
+            background-size: cover;
+            background-position: center center;
+            animation-name: fade_in;
+            animation-duration: 0.5s;
+            animation-timing-function: ease-in-out;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            animation-play-state: running;
+            animation-iteration-count: 1;
+            opacity: 1;
+        }*/
+        .pic-switch {
+            position: absolute;
+            bottom: 3vh;
+            right: 0.3vw;
+            transform: translateX(-50%);
+            display: flex;
+            height: auto;
+            width: 150px;
+            /*background-color: #263a2d;*/
+        }
+        /*内容页面*/
+        .apage {
+            position: relative;
+            height: 100vh;
+            display: none;
+        }
+        .apage .grid-cont{
+            position: relative;
+            top: 20vh;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            row-gap: 50px;
+            column-gap:50px ;
+        }
+        .apage .grid-cont .grid-box{
+            color: #263a2d;
+            background-color: #ecfff5;
+            height: 60vh;
+            border-radius: 05%;
+            box-shadow: 0 0 5px rgba(168, 182, 174,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div id="welcome-pictures" >
+            <div class="pic"></div>
+            <div class="pic-switch">
+
+            </div>
+        </div>
+        <div class="apage">
+            <div class="wp">
+                <div class="grid-cont">
+                    <div class="grid-box" >
+                    <h1>You know What?</h1>
+                    <p>I love you</p>
+                    </div>
+                    <div class="grid-box" >
+                    <h1>欢迎来到Icycode的博客</h1>
+                    <p>这里是主内容区域。</p>
+                    </div>
+                    <div class="grid-box" >
+                    <h1>欢迎来到Icycode的博客</h1>
+                    <p>这里是主内容区域。</p>
+                    </div>
+                    <div class="grid-box" >
+                    <h1>欢迎来到Icycode的博客</h1>
+                    <p>这里是主内容区域。</p>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar" id="bar" >
+        <div class="menu-box">
+            <a href="pages/AboutMe.html"><span>
+            <h1>
+               <img style="filter: invert(1);" src="resource/icons/Colebemis-Feather-User.svg" alt="AboutMe">
+            </h1>
+            <p id="bardes">About Me</p></span></a>
+        </div>
+        <div class="menu-box">
+            <a href="pages/UsefulWebsite.html"><span><h1> <img style="filter:invert(100%) ;" src="resource/icons/Github-Octicons-Globe-24.svg" alt="Websites"></h1><p id="bardes">Useful Websites</p></span></a>
+        </div>
+        <div class="menu-box">
+            <a href=""><span><h1><img style="filter: invert(1);" src="resource/icons/Colebemis-Feather-Star.svg" alt="Mylove"></h1><p id="bardes">MyFavorate</p></span></a>
+        </div>
+        <div class="menu-box">
+            <a href=""><span><h1><img style="filter: invert(1);" src="resource/icons/Colebemis-Feather-Settings.svg" alt="settings"></h1><p id="bardes">Settings</p></span></a>
+        </div>
+    </div>
+
+</body>
+    <script src="config.js"></script>
+    <script src="/blog/wel-pics.js"></script>
+    <script>
+        /*
+        function showMainContent() {
+            var mainContent = document.getElementsByClassName('apage')[0];
+            mainContent.style.display = 'block';
+            mainContent.scrollIntoView({behavior: "smooth"});
+        }
+        function whenResize() {
+            height = window.innerHeight;
+            var x = document.getElementById('bar');
+            //x.getElementsByTagName('h1')[0].innerHTML = height + 'px';
+        }
+        function toggleSidebar() {
+
+            var sidebar = document.getElementById('bar');
+            sidebar.style.width = '5.5cm';
+            var bardes = document.querySelectorAll('#bar .menu-box span p')
+            Array.from(bardes).forEach(function(element){
+                element.style.opacity = '1';
+            })
+        }
+        */
+        window.onresize = whenResize;
+        whenResize();
+        document.getElementById('welcome-pictures').addEventListener('mouseover', function() {
+            //鼠标移动到图片上sidebar的width变为2cm，文字透明度变0
+            document.getElementById('bar').style.width = '2cm';
+            var bardes = document.querySelectorAll('#bar .menu-box span p')
+            Array.from(bardes).forEach(function(element){
+                element.style.opacity = '0';
+            })
+        });
+        //为sidebar的每个menu-box添加鼠标悬停事件
+        const menus = document.getElementById('bar').getElementsByClassName('menu-box');
+        Array.from(menus).forEach(element => {
+            element.addEventListener('mouseover',toggleSidebar)
+        });
+
+        //滚轮事件:内容页面向上滚动显示视觉图，视觉图向下滚动或点击显示内容页面
+        document.getElementsByClassName('apage')[0].addEventListener('wheel', function(event) {
+            if (event.deltaY < 0) {
+                document.getElementsByClassName('pic')[0].style.display = 'block';
+                document.getElementById('bar').style.display = 'flux';
+                document.getElementsByClassName('pic')[0].scrollIntoView({behavior: "smooth"});
+            }
+            
+        });
+        document.getElementsByClassName('pic')[0].addEventListener('click', showMainContent);
+        document.getElementsByClassName('pic')[0].addEventListener('wheel', function(event) {
+            if (event.deltaY > 0) {
+                showMainContent();
+            }else{
+                document.getElementsByClassName('apage')[0].style.display = 'none';
+            }
+        });
+        //监听页面滚动事件：当页面滚动到顶部时隐藏内容页面
+        window.addEventListener('scroll', ifHideMainContent);
+
+        //显示浏览器信息
+        console.log('浏览器品牌'+navigator.appName);
+        console.log('浏览器品牌'+navigator.appVersion);
+        console.log('浏览器品牌'+navigator.userAgent);
+        console.log('浏览器品牌'+navigator.platform);
+    </script>
+</html>

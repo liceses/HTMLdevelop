@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="/blog/main.css">
+    
+    <style>
+        .main-content{
+            position: relative;
+            height: 100vh;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar" id="bar" >
+        <div class="menu-box"  >
+            <a href="/blog/pages/AboutMe.html" ><span >
+            <h1>
+               <img style="filter: invert(1);" src="/blog/resource/icons/Colebemis-Feather-User.svg" alt="AboutMe">
+            </h1>
+            <p id="bardes">About Me</p></span></a>
+        </div>
+        <div class="menu-box" style="background-color: #3b5d47;">
+            <a href="/blog/mainpage.html"><span><h1> <img style="filter:invert(100%) ;" src="/blog/resource/icons/Github-Octicons-Globe-24.svg" alt="Websites"></h1><p id="bardes">Useful Websites</p></span></a>
+        </div>
+        <div class="menu-box">
+            <a href=""><span><h1><img style="filter: invert(1);" src="/blog/resource/icons/Colebemis-Feather-Star.svg" alt="Mylove"></h1><p id="bardes">MyFavorate</p></span></a>
+        </div>
+        <div class="menu-box">
+            <a href=""><span><h1><img style="filter: invert(1);" src="/blog/resource/icons/Colebemis-Feather-Settings.svg" alt="settings"></h1><p id="bardes">Settings</p></span></a>
+        </div>
+    </div>
+    <div class="main-content">
+        hi
+    </div>
+</body>
+    <script src="/blog/functions.js"></script>
+    <script>
+        var mainC =  document.getElementsByClassName('main-content')[0];
+        mainC.addEventListener('mouseover',sidebarTo2cm);
+        var bar =document.getElementById('bar');
+        bar.addEventListener('mouseover',toggleSidebar);
+    </script>
+</html>

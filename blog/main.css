@@ -1,0 +1,89 @@
+:root{
+    --background-white:#EEF7F2;
+    --cardBackground:#ecfff5;
+    --font-green:#263a2d;
+}
+/* 全局初始化 */
+
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.wp{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+/*导航栏*/
+#bar {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 2cm;    
+    float: left;
+    background-color: #4f7a5e;
+    opacity: 0.3;
+    color: #ffffff;
+    box-shadow: -2px 0 5px 1px rgba(0,0,0,0.3);
+    z-index: 11;
+    overflow: hidden;
+    transition: width 0.3s, opacity 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    align-content: center;
+    flex-wrap: wrap;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3); 
+}
+#bar:hover {
+    opacity: 1.0;
+    transition: width 0.3s, opacity 0.3s ease-in-out;
+}
+#bar .menu-box {
+    width: 100%;
+    height: 2cm;
+    text-align: left;
+    flex-wrap: nowrap;
+    padding: 10px 0;
+    padding-left: 0.5cm;
+    
+}
+#bar .menu-box span{
+    text-wrap: nowrap;
+    flex-wrap: nowrap;
+    display: inline-block;
+}
+#bar .menu-box span h1{
+    
+    white-space: nowrap;
+    transform: translateY(12px);
+    display: inline-block;    
+}
+#bar .menu-box span h1 img{
+    width: 1cm;
+}
+#bar .menu-box span p{
+    line-height: 2cm;
+    white-space: nowrap;
+    display: inline-block;
+    opacity: 0;
+    padding-left: 10px;
+    vertical-align: baseline;
+    
+    transition: opacity 0.3s ease-in-out;
+}
+@keyframes fade_in{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
