@@ -218,7 +218,7 @@ function autoSlideArrow() {
        }
    }, welcomeConfig.welpicdelay);
 }
-
+//按钮点击事件处理
 if(welcomeConfig.welpicdisplay === "dot") {
     swi_buts[active_index].style.opacity = '1'; //设置初始按钮样式
     autoSlideDot();

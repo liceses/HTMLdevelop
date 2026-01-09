@@ -10,12 +10,26 @@
         .main-content{
             position: relative;
             padding-left: 2cm;
-            height: 100vh;
+            height: auto;
             z-index: 1;
             background-color: var(--background-white);
         }
         .grid-cont{
             display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 300px);
+            gap: 20px;
+            padding-top: 50px;
+        }
+        .grid-box{
+            color: var(--font-green);
+            background-color: var(--cardBackground);
+            
+            border-radius: 5%;
+            box-shadow: 0 0 5px var(--card-box-shadow);
+        }
+        .grid-cont :nth-child(1){
+            grid-column: 1/-1;
         }
     </style>
 </head>
@@ -42,7 +56,11 @@
     <div class="main-content">
         <div class="wp" >
                 <main class="grid-cont">
-                    
+                    <div class="grid-box">喵喵喵</div>
+                    <div class="grid-box">喵喵喵</div>
+                    <div class="grid-box">喵喵喵</div>
+                    <div class="grid-box">喵喵喵</div>
+                    <div class="grid-box">喵喵喵</div>
                 </main>
         </div>
     </div>

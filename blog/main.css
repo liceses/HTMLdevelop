@@ -1,7 +1,9 @@
 :root{
+    --border-color:#ccc;
     --background-white:#EEF7F2;
     --cardBackground:#ecfff5;
     --font-green:#263a2d;
+    --card-box-shadow:rgba(168, 182, 174,0.5);
 }
 /* 全局初始化 */
 
@@ -22,7 +24,7 @@ a{
 /*导航栏*/
 #bar {
     
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
@@ -41,6 +43,9 @@ a{
     align-content: center;
     flex-wrap: wrap;
     box-shadow: 2px 0 5px rgba(0,0,0,0.3); 
+}
+.mainpage#bar{
+    position: absolute;
 }
 #bar:hover {
     opacity: 1.0;
