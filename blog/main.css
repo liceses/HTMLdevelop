@@ -87,3 +87,25 @@ a{
         opacity: 1;
     }
 }
+@keyframes arrow-breathing_left{
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes arrow-breathing_right{
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(10%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}

@@ -6,28 +6,6 @@
     <title>Icycode-Warmlife</title>
     <link rel="stylesheet" href="/blog/main.css">
     <script src="/blog/functions.js"></script>
-    <script>
-        var swi_buts = [document.createElement('div'),document.createElement('div'),document.createElement('div'),document.createElement('div'),document.createElement('div')];
- swi_buts.forEach(function(element, index){
-    element.className = 'pic-s-buttons';
-    
-    element.style.opacity = '0.5';
-    element.style.transition = 'width 0.1s ease-in-out,border-radius 0.1s ease-in-out,opacity 0.3s ease-in-out';
-    element.style.width = '20px';
-    element.style.height = '20px';
-    element.style.margin = '0 auto';
-    element.style.borderRadius = '50%';
-    element.style.backgroundColor = 'white';
-    element.style.cursor = 'pointer';
-    
-    document.getElementsByClassName('pic-switch')[0].appendChild(element);});
-    element.addEventListener("mouseover", function() {
-        element.style.transition = 'all 0.1s ease-in-out';
-        element.style.width = '30px';
-        element.style.borderRadius = '10px';
-        element.style.opacity = '1';
-    });
-    </script>
     <style>
 
         
@@ -66,10 +44,11 @@
             position: absolute;
             bottom: 3vh;
             right: 0.3vw;
-            transform: translateX(-50%);
+            transform: translateX(-20%);
             display: flex;
             height: auto;
             width: 150px;
+            z-index: 11;
             /*background-color: #263a2d;*/
         }
         /*内容页面*/
