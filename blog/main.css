@@ -1,6 +1,6 @@
 :root{
     --border-color:#ccc;
-    --background-white:#EEF7F2;
+    --background-white:#f9fffc;
     --cardBackground:#ecfff5;
     --font-green:#263a2d;
     --card-box-shadow:rgba(168, 182, 174,0.5);
@@ -10,8 +10,8 @@
 * {
     margin: 0;
     padding: 0;
-    
 }
+
 a{
     text-decoration: none;
     color: #ffffff;
@@ -28,7 +28,6 @@ em{
 }
 /*导航栏*/
 #bar {
-    
     position: fixed;
     top: 0;
     left: 0;

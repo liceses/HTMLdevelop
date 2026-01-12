@@ -4,7 +4,6 @@ var pics = [
   "resource/wel1.png","resource/wel2.png","resource/wel3.jpg","resource/wel4.jpg","resource/wel5.png"
 ];//图片数组
 
-
 if(welcomeConfig.welpicdisplay == 'dot'){
     //圆点模式
     console.log("Dot mode");
@@ -101,8 +100,6 @@ if(welcomeConfig.welpicdisplay == 'dot'){
 var active_index = 0; //当前显示图片的索引
 var ifonclick = 0; //按钮点击标志
 
-
-
 var pic_element = document.getElementsByClassName('pic')[0]; //获取图片元素
 var pic_front = document.createElement('div'); //创建前景图片元素
 pic_front.className = 'pic-front';
@@ -110,9 +107,6 @@ var pic_back = document.createElement('div'); //创建背景图片元素
 pic_back.className = 'pic-back';
 var pic_mid = document.createElement('div'); //创建中间图片元素
 pic_mid.className = 'pic-mid';
-
-
-
 //初始化图片元素样式
 {
 pic_mid.style.height = '100vh';
@@ -155,47 +149,42 @@ pic_element.appendChild(pic_back);
 pic_element.appendChild(pic_front);
 pic_element.appendChild(pic_mid);
 }
-
 //自动轮播功能
 function autoSlideDot() {
    var autoSlideInterval =  setInterval(function(){
       if (ifonclick === 1) {
-          ifonclick = 0;
-          return;
+        return;
       }else{
-      pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-      pic_front.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-      pic_back.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-      pic_back.offsetHeight; //触发重绘
-      pic_front.offsetHeight; //触发重绘
-      pic_mid.offsetHeight; //触发重绘
-      var next_index = active_index +1;
-      if(next_index >= pics.length) next_index = 0;
-      swi_buts[active_index].style.opacity = '0.5'; //重置上一个按钮样式
-      swi_buts[next_index].style.opacity = '1';
-      pic_back.style.backgroundImage = 'url(' + pics[next_index] + ')';
-      pic_back.style.opacity = '1';
-      pic_mid.style.opacity = '0';
-      active_index = next_index;
-      setTimeout(function(){
-          pic_mid.style.transition = 'none';
-          pic_mid.style.backgroundImage = 'url(' + pics[active_index] + ')';
-          pic_mid.style.opacity = '1';
-          pic_back.style.opacity = '0';
-      }, 500);
-      pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-      console.log(pic_mid.style.transition);
-      pic_mid.offsetHeight; //触发重绘
+        pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+        pic_front.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+        pic_back.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+        pic_back.offsetHeight; //触发重绘
+        pic_front.offsetHeight; //触发重绘
+        pic_mid.offsetHeight; //触发重绘
+        var next_index = active_index +1;
+        if(next_index >= pics.length) next_index = 0;
+        swi_buts[active_index].style.opacity = '0.5'; //重置上一个按钮样式
+        swi_buts[next_index].style.opacity = '1';
+        pic_back.style.backgroundImage = 'url(' + pics[next_index] + ')';
+        pic_back.style.opacity = '1';
+        pic_mid.style.opacity = '0';
+        active_index = next_index;
+        setTimeout(function(){
+            pic_mid.style.transition = 'none';
+            pic_mid.style.backgroundImage = 'url(' + pics[active_index] + ')';
+            pic_mid.style.opacity = '1';
+            pic_back.style.opacity = '0';
+        }, 500);
+        pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+        console.log(pic_mid.style.transition);
+        pic_mid.offsetHeight; //触发重绘
       }
-
   }, welcomeConfig.welpicdelay);
   return autoSlideInterval;
 }
-
 function autoSlideArrow() {
     setInterval(function(){
        if (ifonclick === 1) {
-           ifonclick = 0;
        }else{
             active_index = (active_index + 1) % pics.length;
 
@@ -245,13 +234,8 @@ if(welcomeConfig.welpicdisplay === "dot") {
             }, 500);
             pic_mid.style.transition = 'opacity 0.3s ease-in-out';
             pic_mid.offsetHeight; //触发重绘
-            
             //autoSlide(); //重新启动自动轮播
-            
         }
-        
-        
-
     });
 });    
 }
@@ -262,34 +246,24 @@ if(welcomeConfig.welpicdisplay === "arrow") {
         if(ifonclick === 1) return;
         else{
             ifonclick = 1;
-            
-        active_index = (active_index - 1 + pics.length) % pics.length;
-
-        pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-        pic_front.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-        pic_mid.offsetHeight; //触发重绘
-        pic_front.offsetHeight; //触发重绘
-
-
-        pic_front.style.transition = 'none';
-        pic_front.style.opacity = '1';
-        pic_mid.style.opacity = '0';
-        setTimeout(() => {
-            pic_mid.style.transition = 'none';
-            pic_mid.style.backgroundImage = 'url(' + pics[active_index] + ')';
-            pic_mid.style.opacity = '1';
-
-            pic_front.style.opacity = '0';
-            pic_front.style.backgroundImage = 'url(' + pics[(active_index - 1 + pics.length) % pics.length] + ')';
-            pic_back.style.backgroundImage = 'url(' + pics[(active_index + 1) % pics.length] + ')';
-            ifonclick = 0;
-        }, welcomeConfig.welpictransition + 100);
-        
-        
+            active_index = (active_index - 1 + pics.length) % pics.length;
+            pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+            pic_front.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+            pic_mid.offsetHeight; //触发重绘
+            pic_front.offsetHeight; //触发重绘
+            pic_front.style.transition = 'none';
+            pic_front.style.opacity = '1';
+            pic_mid.style.opacity = '0';
+            setTimeout(() => {
+                pic_mid.style.transition = 'none';
+                pic_mid.style.backgroundImage = 'url(' + pics[active_index] + ')';
+                pic_mid.style.opacity = '1';
+                pic_front.style.opacity = '0';
+                pic_front.style.backgroundImage = 'url(' + pics[(active_index - 1 + pics.length) % pics.length] + ')';
+                pic_back.style.backgroundImage = 'url(' + pics[(active_index + 1) % pics.length] + ')';
+                ifonclick = 0;
+            }, welcomeConfig.welpictransition + 100);
         }
-        
-
-        
     });
 
     swi_arrows[1].addEventListener('click', function(){
@@ -297,29 +271,24 @@ if(welcomeConfig.welpicdisplay === "arrow") {
         if(ifonclick === 1) return;
         else{
             ifonclick = 1;
-        active_index = (active_index + 1) % pics.length;
-
-        pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-        pic_back.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
-        pic_mid.offsetHeight; //触发重绘
-        pic_back.offsetHeight; //触发重绘  
-        pic_back.style.transition = 'none';
-        pic_back.style.opacity = '1';
-        pic_mid.style.opacity = '0';
-        setTimeout(() => {
-            pic_mid.style.transition = 'none';
-            pic_mid.style.backgroundImage = 'url(' + pics[active_index] + ')';
-            pic_mid.style.opacity = '1';
-            pic_back.style.opacity = '0';
-            pic_back.style.backgroundImage = 'url(' + pics[(active_index + 1) % pics.length] + ')';
-            pic_front.style.backgroundImage = 'url(' + pics[(active_index - 1 + pics.length) % pics.length] + ')';
-            ifonclick = 0;
-        }, welcomeConfig.welpictransition + 100);
-        
-        
+            active_index = (active_index + 1) % pics.length;
+            pic_mid.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+            pic_back.style.transition = 'opacity ' + welcomeConfig.welpictransition + 'ms ease-in-out';
+            pic_mid.offsetHeight; //触发重绘
+            pic_back.offsetHeight; //触发重绘  
+            pic_back.style.transition = 'none';
+            pic_back.style.opacity = '1';
+            pic_mid.style.opacity = '0';
+            setTimeout(() => {
+                pic_mid.style.transition = 'none';
+                pic_mid.style.backgroundImage = 'url(' + pics[active_index] + ')';
+                pic_mid.style.opacity = '1';
+                pic_back.style.opacity = '0';
+                pic_back.style.backgroundImage = 'url(' + pics[(active_index + 1) % pics.length] + ')';
+                pic_front.style.backgroundImage = 'url(' + pics[(active_index - 1 + pics.length) % pics.length] + ')';
+                ifonclick = 0;
+            }, welcomeConfig.welpictransition + 100);
         }
-        
     });
-    
 }
 
