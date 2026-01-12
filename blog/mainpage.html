@@ -61,7 +61,7 @@
             position: relative;
             top: 20vh;
             display: grid;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: repeat(4,22%);
             row-gap: 50px;
             column-gap:50px ;
         }
@@ -70,7 +70,13 @@
             background-color: #ecfff5;
             height: 60vh;
             border-radius: 05%;
-            box-shadow: 0 0 5px rgba(168, 182, 174,0.5);
+            box-shadow: 0 0 5px rgba(168, 182, 174,0.5)
+        }
+        .apage .grid-cont .grid-box h1::before{
+            content: "- ";
+        }
+        .apage .grid-cont .grid-box:nth-child(1) p{
+            text-align: center;
         }
     </style>
 </head>
@@ -87,12 +93,19 @@
             <div class="wp">
                 <div class="grid-cont">
                     <div class="grid-box" >
-                    <h1>You know What?</h1>
-                    <p>I love you</p>
+                    <h1>每日一诗</h1>
+                    <p><em>夜宿山寺</em> 唐 李白<br>
+危楼高百尺，手可摘星辰。<br>
+不敢高声语，恐惊天上人。</p>
                     </div>
                     <div class="grid-box" >
-                    <h1>欢迎来到Icycode的博客</h1>
-                    <p>这里是主内容区域。</p>
+                    <h1>考试安排</h1>
+                    <p>19号军理（下午2:00-3:40，随堂考试)<br>
+                    21号c++（时间地点待定）<br>
+                    23号软工导论（下午4:00~5:40，地点待定）<br>
+                    25号web（下午4:00-5:40，地点待定）  <br>
+                    26号高数（上午10:00~11:40，地点见本科生教务）<br>
+                    27号思法（上午10:00~11:40，地点见本科生教务）<br>大英（下午2:00~4:05，地点见本科生教务）</p>
                     </div>
                     <div class="grid-box" >
                     <h1>欢迎来到Icycode的博客</h1>

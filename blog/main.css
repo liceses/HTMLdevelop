@@ -21,6 +21,11 @@ a{
     width: 90%;
     margin: 0 auto;
 }
+em{
+    font-size: large;
+    font-style: normal;
+    font-weight: bold;
+}
 /*导航栏*/
 #bar {
     
@@ -31,7 +36,7 @@ a{
     width: 2cm;    
     float: left;
     background-color: #4f7a5e;
-    opacity: 0.3;
+    opacity: 0.1;
     color: #ffffff;
     box-shadow: -2px 0 5px 1px rgba(0,0,0,0.3);
     z-index: 11;
@@ -84,6 +89,25 @@ a{
     
     transition: opacity 0.3s ease-in-out;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes fade_in{
     0%{
         opacity: 0;
