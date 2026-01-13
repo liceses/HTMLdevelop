@@ -1,8 +1,8 @@
 Up_Alphabet = ['A','B','C','D','E','F','G'
     ,'H','I','J','K','L','M','N','O','P',
     'Q','R','S','T','U','V','W','X','Y',
-    'Z']
-
+    'Z','1','2','3','4','5','6','7','8','9','0']
+//更改上方数组，可更改字符的范围
 var pageWidth = window.innerWidth;
 var pageHeight = window.innerHeight;
 var textcos =[];
@@ -10,11 +10,11 @@ var i_textco = 0;
 var BackGround = document.getElementById('background');
 //settings
 {
-    var time_falling = '10s';
-    var dalay_falling = '50ms';
-    var speed_falling = 100;
-    var num_fallingChars = 20;
-    var interval_falling = 10;
+    var time_falling = '10s';//下落的时间，根据下落速度和字符生成的高度计算得出。设定此值无效
+    var dalay_falling = '50ms';//字符出现后在原高度停留的时间
+    var speed_falling = 100;//字符下落的速度，单位px/s
+    var num_fallingChars = 20;//无用变量，下落字符的数量不是确定的数字
+    var interval_falling = 10;//生成下落字符的周期(时间间隔)
 
 } 
 window.addEventListener('resize',function () {
@@ -42,9 +42,7 @@ function falling_textcos(ele){
     time_falling = (pageHeight - r_top)/speed_falling +'s';
     //console.log(time_falling);
     ele.style.animationDuration = time_falling;
- 
     BackGround.appendChild(ele);
-
     //字母循环
     {let i = Math.floor(Math.random()*25);
     setInterval(() => {
