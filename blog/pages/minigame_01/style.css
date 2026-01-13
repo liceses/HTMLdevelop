@@ -1,3 +1,6 @@
+:root{
+    --char-switch : 5s;
+}
 *{
     padding: 0;
     margin: 0;
@@ -17,16 +20,122 @@ main{
     font-size: 1rem;
     box-sizing: border-box;
     width: 1rem;
-    animation-name:charactors-fallingDown;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-delay: 50ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+animation: charactors-fallingDown 10s linear 50ms 1 normal forwards,
+switch_char var(--char-switch) steps(35,end) 0 infinite;
 }
 @keyframes charactors-fallingDown {
     to{
         top:95%;
         opacity:0;
+    }
+}
+@keyframes switch_char {
+    0%{
+        content: attr(data-char0);
+    }
+    2.5%{
+        content: attr(data-char1);
+    }
+    5%{
+        content: attr(data-char2);
+    }
+    7.5%{
+        content: attr(data-char3);
+    }
+    10%{
+        content: attr(data-char4);
+    }
+    12.5%{
+        content: attr(data-char5);
+    }
+    15%{
+        content: attr(data-char6);
+    }
+    17.5%{
+        content: attr(data-char7);
+    }
+    20%{
+        content: attr(data-char8);
+    }
+    22.5%{
+        content: attr(data-char9);
+    }
+    25%{
+        content: attr(data-char10);
+    }
+    27.5%{
+        content: attr(data-char11);
+    }
+    30%{
+        content: attr(data-char12);
+    }
+    32.5%{
+        content: attr(data-char13);
+    }
+    35%{
+        content: attr(data-char14);
+    }
+    37.5%{
+        content: attr(data-char15);
+    }
+    40%{
+        content: attr(data-char16);
+    }
+    42.5%{
+        content: attr(data-char17);
+    }
+    45%{
+        content: attr(data-char18);
+    }
+    47.5%{
+        content: attr(data-char19);
+    }
+    50%{
+        content: attr(data-char20);
+    }
+    52.5%{
+        content: attr(data-char21);
+    }
+    55%{
+        content: attr(data-char22);
+    }
+    57.5%{
+        content: attr(data-char23);
+    }
+    60%{
+        content: attr(data-char24);
+    }
+    62.5%{
+        content: attr(data-char25);
+    }
+    65%{
+        content: attr(data-char26);
+    }
+    67.5%{
+        content: attr(data-char27);
+    }
+    70%{
+        content: attr(data-char28);
+    }
+    72.5%{
+        content: attr(data-char29);
+    }
+    75%{
+        content: attr(data-char30);
+    }
+    77.5%{
+        content: attr(data-char31);
+    }
+    80%{
+        content: attr(data-char32);
+    }
+    82.5%{
+        content: attr(data-char33);
+    }
+    85%{
+        content: attr(data-char34);
+    }
+    87.5%{
+        content: attr(data-char35);
     }
 }
