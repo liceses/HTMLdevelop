@@ -25,25 +25,46 @@ main{
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
-
-#gamebox{
-    position: absolute;
-    height: 100%;
-    width: 40%;
-    background-color: azure;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+@media screen and (min-width : 600px ) {
+    #gamebox{
+        position: absolute;
+        height: 100%;
+        width: 40%;
+        background-color: azure;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #canvas_GB{
+        position: absolute;
+        background-color: white;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+    
+    }
+}
+@media screen and (max-width:600px) {
+    #gamebox{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: azure;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #canvas_GB{
+        position: absolute;
+        background-color: white;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+    
+    }
 }
 
-#canvas_GB{
-    position: absolute;
-    background-color: white;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
 
-}
 
 @keyframes charactors-fallingDown {
     to{
