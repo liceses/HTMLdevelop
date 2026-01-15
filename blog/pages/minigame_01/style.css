@@ -24,45 +24,40 @@ main{
     animation-delay: 50ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    contain: paint;
 }
-@media screen and (min-width : 600px ) {
-    #gamebox{
-        position: absolute;
-        height: 100%;
-        width: 40%;
-        background-color: azure;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    #canvas_GB{
-        position: absolute;
-        background-color: white;
-        bottom: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-    
-    }
+#NextfruitImg{
+    position: absolute;
+    top:10%;
+    left:10%;
+    background-image: url(./res/f1_0.png); 
 }
-@media screen and (max-width:600px) {
+#gamebox{
+    position: absolute;
+    height: 100%;
+    width: 40%;
+    background-color: azure;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#canvas_GB{
+    position: absolute;
+    background-color: white;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+@media screen and (orientation: portrait) {
     #gamebox{
-        position: absolute;
         height: 100%;
         width: 100%;
-        background-color: azure;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    #canvas_GB{
-        position: absolute;
-        background-color: white;
-        bottom: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-    
+
     }
 }
+
 
 
 
