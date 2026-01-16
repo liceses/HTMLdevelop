@@ -116,6 +116,7 @@ var Game = {
     fruit:{
         gamesize:{x:400,y:400},
         gamecanvas:canvas_GB,
+        fruitsize_list:[],
         NextfruitSize:1,
         fruitIndex:-1,
         /**
@@ -136,6 +137,7 @@ var Game = {
                 Composite = Matter.Composite,
                 Common = Matter.Common,
                 Vector = Matter.Vector,
+                Detector = Matter.Detector,
                 Body = Matter.Body;
             let engine = Engine.create();
             let runner = Runner.create();
@@ -151,23 +153,36 @@ var Game = {
                 }
             
             });
+            let fruit_collision = Detector.create();
             //创建边界墙
             let wall_left = Bodies.rectangle(0,render.options.height*0.5,15,render.options.height,{
                 isStatic:true,
                 render:{
                     fillStyle:"rgba(34, 255, 0, 0.5)"
+                },
+                collisionFilter:{
+                    category:0x0001,
+                    mask:0x0001
                 }
             })
             let wall_right = Bodies.rectangle(render.options.width,render.options.height*0.5,15,render.options.height,{
                 isStatic:true,
                 render:{
                     fillStyle:"rgba(34, 255, 0, 0.5)"
+                },
+                collisionFilter:{
+                    category:0x0001,
+                    mask:0x0001
                 }
             })
             let wall_bottom = Bodies.rectangle(render.options.width*0.5,render.options.height,render.options.width,15,{
                 isStatic:true,
                 render:{
                     fillStyle:"rgba(34, 255, 0, 0.5)"
+                },
+                collisionFilter:{
+                    category:0x0001,
+                    mask:0x0001
                 }
             })
             //创建内容
@@ -212,6 +227,7 @@ var Game = {
                 Body.setMass(fruit,Mass_fruits[fruit_Size-1]);
                 console.log(fruit,'created');
                 this.fruitIndex += 1 ;
+                this.fruitsize_list[this.fruitIndex] = fruit_Size;
                 return fruit;
             }
             
@@ -231,26 +247,28 @@ var Game = {
             Body.setStatic(fruits[this.fruitIndex],true);
             fruits[this.fruitIndex + 1] = createAnewfruit(getfruitSize(),-500,0);
             Body.setStatic(fruits[this.fruitIndex],true);
+            //实现水果跟随鼠标移动,点击释放
             let mouse_vector = Vector.create(mouseX_Canvas,mouseY_Canvas)
             canvas_GB.addEventListener('mousemove',async (event)=> {
                 mouseX_Canvas = event.offsetX;
                 mouseY_Canvas = event.offsetY;
                 mouse_vector.x = mouseX_Canvas;
                 mouse_vector.y = this.gamesize.y*0.1;
-                Body.setPosition(fruits[this.fruitIndex-1],mouse_vector)
-
+                fruits[this.fruitIndex-1].collisionFilter.mask = 0x0000;
+                Body.setPosition(fruits[this.fruitIndex-1],mouse_vector);
             })
             canvas_GB.addEventListener('click',()=>{
-                Body.setStatic(fruits[Game.fruit.fruitIndex - 1],false)
-                setTimeout(() => {
-                    fruits[this.fruitIndex + 1] = createAnewfruit(getfruitSize(),-500,0);
-                    Body.setStatic(fruits[this.fruitIndex],true);
-                    Composite.add(engine.world,fruits[this.fruitIndex])
-                }, 100);
+                Body.setStatic(fruits[Game.fruit.fruitIndex - 1],false);
+                console.log('1',fruits[this.fruitIndex-1].collisionFilter)
+                fruits[this.fruitIndex-1].collisionFilter.mask = 0x0001;
+                console.log('2',fruits[this.fruitIndex-1].collisionFilter)
+                fruits[this.fruitIndex + 1] = createAnewfruit(getfruitSize(),-500,0);//fruitIndex ++了
+                Body.setStatic(fruits[this.fruitIndex],true);
+                Composite.add(engine.world,fruits[this.fruitIndex])
+
             })
             //var ground = Bodies.rectangle(200,450,810,60,{isStatic:true});
             //创建视角固定器
-            
             let viewbox = Bodies.rectangle(render.options.width*0.5,render.options.height*0.5,render.options.width,render.options.height,{
                 isStatic:true,
                 collisionFilter:{
@@ -262,7 +280,20 @@ var Game = {
                 }
             }) 
             render.bounds = viewbox;
-            
+            //实现持续碰撞检测,发现相同fruitsize的fruit
+            setInterval(() => {
+                Detector.setBodies(fruit_collision,fruits);
+                let collisions =  Detector.collisions(fruit_collision) ;
+                collisions.forEach(element => {
+                    let fruitA = element.bodyA;
+                    let fruitB = element.bodyB;
+                    let i_A = Array.prototype.indexOf.call(fruits,fruitA);
+                    let i_B = Array.prototype.indexOf.call(fruits,fruitB);
+                    if (this.fruitsize_list[i_A] == this.fruitsize_list[i_B]){
+                        Composite.remove(engine.world,[fruitA,fruitB])
+                    }
+                });
+            }, 50);
             //Composite.add(engine.world,[fruit_1])
             Composite.add(engine.world,[wall_left,wall_right,wall_bottom,viewbox]);
             fruits.forEach(element => {
