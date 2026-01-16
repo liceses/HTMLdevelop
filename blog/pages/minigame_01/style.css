@@ -25,6 +25,7 @@ main{
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     contain: paint;
+    z-index: 1;
 }
 #NextfruitImg{
     position: absolute;
@@ -40,6 +41,7 @@ main{
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 2;
 }
 #canvas_GB{
     position: absolute;
@@ -49,7 +51,33 @@ main{
     transform: translateX(-50%);
 
 }
+#gamebar{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    right: 5%;
+    width: auto;
+    height: 20%;
+    background-color: aliceblue;
+    opacity: 0.6;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(168, 182, 174,0.5)
+}
+#score{
+    padding-top: 5%;
+    
+}
+#scorenum{
+    display: inline-block;
+    
+}
+#scoreText{
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+    
 
+}
 @media screen and (orientation: portrait) {
     #gamebox{
         height: 100%;
