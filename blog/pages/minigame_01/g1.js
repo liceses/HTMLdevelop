@@ -436,7 +436,7 @@ canvas_GB.height = gameheight_shuold +'px';
 gamebox.appendChild(canvas_GB);
 //获取相对于canvas的鼠标位置
 
-//创建score,gamestate
+//创建score,gamestate,nextfruit
 
 
 let score = document.getElementById('scorenum');
@@ -446,6 +446,15 @@ setInterval(() => {
     if (!(score.textContent ==Game.fruit.score)) {
         score.textContent = Game.fruit.score;
     }
+    var nextfruitpic = document.getElementById('nextfruitpic');
+    var NextfruitSize = Game.fruit.NextfruitSize;
+    let fruit_Scale = gamewidth_shuold/(5*204);
+    let Radius_fruits = [26,40,54,60,76,92,97,130,154,154,204];
+    nextfruitpic.style.backgroundImage = `url('res/f${NextfruitSize+1}.png')`;
+    
+    nextfruitpic.style.height = Radius_fruits[NextfruitSize - 1]*2*fruit_Scale +'px';
+    nextfruitpic.style.width = Radius_fruits[NextfruitSize - 1]*2*fruit_Scale +'px';
+
 }, 50);
 //下次预览
 
