@@ -200,7 +200,7 @@ var Game = {
                 let fruit_Scale = render.options.width/(5*204);
                 //fruit_Scale = 0.5;
                 let Radius_fruits = [26,40,54,60,76,92,97,130,154,154,204];
-                let Mass_fruits = [1.5,4.0,1.50,1.00,1.50,2.50,2.00,1.000,1.500,4.000]
+                let Mass_fruits = [1.5,4.0,1.50,1.00,1.50,2.50,2.00,1.000,1.500,4.000,4.000]
                 let fruit; 
                 if(fruit_Size<=12){
                     fruit =  Bodies.circle(x,y,Radius_fruits[fruit_Size-1]*fruit_Scale,{
@@ -275,6 +275,7 @@ var Game = {
                 mouseX_Canvas = event.offsetX;
                 mouseY_Canvas = event.offsetY;
                 mouse_vector.x = mouseX_Canvas;
+                //mouse_vector.y =mouseY_Canvas;
                 mouse_vector.y = this.gamesize.y*0.1;
                 fruitsTofall[this.fruitIndex].collisionFilter.mask = 0x0000;
                 Body.setPosition(fruitsTofall[this.fruitIndex],mouse_vector);
@@ -284,7 +285,7 @@ var Game = {
                 console.log('1',fruitsTofall[this.fruitIndex].collisionFilter)
                 fruitsTofall[this.fruitIndex].collisionFilter.mask = 0x0001;
                 console.log('2',fruitsTofall[this.fruitIndex].collisionFilter)
-                fruitsTofall[this.fruitIndex + 1] = createAnewfruit(this.NextfruitSize = getfruitSize(),-500,0);//fruitIndex ++了
+                fruitsTofall[this.fruitIndex + 1] = createAnewfruit(this.NextfruitSize = getfruitSize(),-500,100);//fruitIndex ++了
                 Body.setStatic(fruitsTofall[this.fruitIndex],true);
                 Composite.add(engine.world,fruitsTofall[this.fruitIndex])
             }
@@ -296,13 +297,13 @@ var Game = {
              * 
              * @param {string} state win or lose
              */
-            let end_game = (state = 'lose')=>{
+            let end_game = (state)=>{
                 canvas_GB.removeEventListener('mousemove',canvas_mousemove);
                 canvas_GB.removeEventListener('click',canvas_click);
-                if (state = 'win') {
+                if (state == 'win') {
                     this.gamestate = 'win';
                 } else if (state = 'lose') {
-                    this.gamestate = 'lose';
+                    this.gamestate == 'lose';
                 }else{
                     this.gamestate = 'ended';
                 }
@@ -339,15 +340,23 @@ var Game = {
                     if (sizeA == sizeB){//直接比较
                         this.score  += sizeA;
                         let newsize;
-                        if (sizeA + 1<=12&&sizeA + 1>0) {
+                        if (sizeA + 1<11&&sizeA + 1>0) {
                             newsize = sizeA + 1;
                             let newX = (fruitA.position.x + fruitB.position.x)/2;
                             let newy = (fruitA.position.y + fruitB.position.y)/2;
                             Composite.remove(engine.world,[fruitA,fruitB])
-                            let synthesizedFruit = createAnewfruit(newsize,newX,newy,false);//fruitIndex ++了
+                            let synthesizedFruit = createAnewfruit(newsize,newX,newy,false);
                             Composite.add(engine.world,synthesizedFruit);
-                        }else if (sizeA+1>=13) {
+                        }else if (sizeA+1>11) {
                             end_game()
+                        }else if (sizeA + 1 == 11) {
+                            newsize = sizeA + 1;
+                            let newX = (fruitA.position.x + fruitB.position.x)/2;
+                            let newy = (fruitA.position.y + fruitB.position.y)/2;
+                            Composite.remove(engine.world,[fruitA,fruitB])
+                            let synthesizedFruit = createAnewfruit(newsize,newX,newy,false);
+                            Composite.add(engine.world,synthesizedFruit);
+                            end_game('win')
                         }
 
                     }
