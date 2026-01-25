@@ -465,5 +465,3 @@ Game.fruit.createGame(gamewidth_shuold,gameheight_shuold,canvas_GB);
 window.addEventListener('resize',()=>{
     calcuGB_width();
 })
-
-
